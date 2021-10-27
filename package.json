@@ -1,0 +1,25 @@
+{
+  "name": "backend-alfa-discos",
+  "version": "1.0.0",
+  "description": "backend-alfa-discos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RPedra/backend-alfa-discos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RPedra/backend-alfa-discos/issues"
+  },
+  "homepage": "https://github.com/RPedra/backend-alfa-discos#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14"
+  }
+}
