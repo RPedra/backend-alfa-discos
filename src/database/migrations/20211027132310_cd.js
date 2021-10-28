@@ -1,10 +1,16 @@
 exports.up = function(knex) {
-    return knex.schema.createTable("cd", function(table) {
+    return knex.schema.createTable('cd', function(table) {
       table.string("cd_id").primary().notNullable();
-      table.string("album").notNullable();
-      table.string("autor").notNullable();
+      table.string("nome").notNullable();
+      table.string("artista").notNullable();
+      table.foreign("artista_id").references("artista_id").inTable("artista").onDelete("cascade");
+      table.string("categoria").notNullable();
       table.string("valor").notNullable();
-      table.string("data").notNullable();
+      table.date("data").notNullable();
+      table.int("popularidade").notNullable();
+      table.date("compra");
+      
+
     });
   };
   
