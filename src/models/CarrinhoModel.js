@@ -1,11 +1,10 @@
+const { v4: uuidv4 } = require('uuid');
 const connection = require("../database/connection");
 
 module.exports = {
     async create(carrinho) {
-        const carrinho_id = user.carrinho_id;
-        const user_id = user.user_id;
-        carrinho.carrinho_id = carrinho_id;
-        carrinho.user_id = user_id;
+        const carrinho_id = uuidv4();
+        carrinho.carrinho_id = carrinho_id;  
         const result = await connection("carrinho").insert(carrinho);
         return result;
     },

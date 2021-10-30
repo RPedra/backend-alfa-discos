@@ -5,8 +5,7 @@ exports.up = function(knex) {
     table.string("nome").notNullable();
     table.string("email").notNullable();
     table.string("senha").notNullable();
-    table.string("carrinho_id").notNullable();
-    table.string("cd_id");
+    table.string("cd_id"); 
     table.foreign("cd_id").references("cd_id").inTable("cd").onDelete("NO ACTION");
   });
 };

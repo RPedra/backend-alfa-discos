@@ -286,9 +286,9 @@ routes.post("/cds", CdController.create);
 routes.put('/cds/:cd_id', CdController.update);
 routes.delete('/cds/:cd_id', CdController.delete);
 
-//carrinho
+//carrinho 
 routes.get("/carrinho/:carrinho_id", CarrinhoController.getById);
-routes.post('/users', CarrinhoController.create);
+routes.post('/carrinho', CarrinhoController.create);
 routes.put('/carrinho/:carrinho_id', CarrinhoController.update); 
 routes.delete('/carrinho/:carrinho_id', CarrinhoController.delete);
 

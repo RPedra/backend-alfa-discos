@@ -1,4 +1,5 @@
 const UserModel = require("../models/UserModel");
+const CarrinhoModel = require("../models/CarrinhoModel");
 
 module.exports = {
     async create (request, response){
@@ -6,14 +7,14 @@ module.exports = {
             const newUser = request.body;
             const result = await UserModel.create(newUser);
  
-            return response.status(200).json(result);
+            return response.status(200).json({cd_id: result});
 
         }catch(error){
             console.warn("Erro no cadastro de usuário:", error);
 
             return response
             .status(500)
-            .json({
+            .json({ 
                 notification: "Erro ao tentar cadastrar usuário"
             });
             
