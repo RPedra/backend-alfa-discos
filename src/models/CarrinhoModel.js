@@ -4,7 +4,7 @@ const connection = require("../database/connection");
 module.exports = {
     async create(carrinho) {
         const carrinho_id = uuidv4();
-        carrinho.carrinho_id = carrinho_id;
+        carrinho.carrinho_id = carrinho_id;  
         const result = await connection("carrinho").insert(carrinho);
         return result;
     },
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     async updateById(carrinho_id, carrinho){
-        const result = await connection("carrinho").where(carrinho_id).update(carrinho);
+        const result = await connection("carrinho").where({carrinho_id}).update(carrinho);
         return result;
     },
 

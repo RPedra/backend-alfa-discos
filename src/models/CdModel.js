@@ -5,8 +5,8 @@ module.exports = {
     async create(cd) {
         const cd_id = uuidv4();
         cd.cd_id = cd_id;
-        const result = await connection("cd").insert(cd);
-        return result;
+        await connection("cd").insert(cd);
+        return cd_id;
     },
 
     async getById({cd_id, nome, categoria, artista_id}){
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     async updateById(cd_id, cd){
-        const result = await connection("cd").where(cd_id).update(cd);
+        const result = await connection("cd").where({cd_id}).update(cd);
         return result;
     },
 

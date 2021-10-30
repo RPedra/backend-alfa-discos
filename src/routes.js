@@ -1,7 +1,7 @@
-const express = require ('express');
+const express = require ("express");
 const routes = express.Router();
 
-const cds = [
+const arnaldo = [
     {
         id: 1,
         nome: "Elã",
@@ -261,35 +261,35 @@ const cds = [
         imagem: "images/AndreaBocelliSI.jpg"
     },
     
-]
+];
 
 const UserController = require ("./controllers/UserController");
 const ArtistaController = require ("./controllers/ArtistaController");
 const CdController = require ("./controllers/CdController");
-const CarrinhoController = require ("./controllers/CarrinhoController")
+const CarrinhoController = require ("./controllers/CarrinhoController");
 
 //Users
 routes.get("/users/:user_id", UserController.getById);
 routes.post('/users', UserController.create);
-routes.post('/users/:user_id', UserController.update);
+routes.put('/users/:user_id', UserController.update);
 routes.delete('/users/:user_id', UserController.delete);
 
 //artista
 routes.get("/artistas/:artista_id", ArtistaController.getById);
 routes.post('/artistas', ArtistaController.create);
-routes.post('/artistas/:artista_id', ArtistaController.update);
+routes.put('/artistas/:artista_id', ArtistaController.update);
 routes.delete('/artistas/:artista_id', ArtistaController.delete);
 
 //cds
 routes.get("/cds/:cd_id", CdController.getById);
-routes.post('/cds', CdController.create);
-routes.post('/cds/:cd_id', CdController.update);
+routes.post("/cds", CdController.create);
+routes.put('/cds/:cd_id', CdController.update);
 routes.delete('/cds/:cd_id', CdController.delete);
 
-//carrinho
+//carrinho 
 routes.get("/carrinho/:carrinho_id", CarrinhoController.getById);
-routes.post('/users', CarrinhoController.create);
-routes.post('/carrinho/:carrinho_id', CarrinhoController.update);
+routes.post('/carrinho', CarrinhoController.create);
+routes.put('/carrinho/:carrinho_id', CarrinhoController.update); 
 routes.delete('/carrinho/:carrinho_id', CarrinhoController.delete);
 
 
