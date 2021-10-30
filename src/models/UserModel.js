@@ -4,9 +4,11 @@ const connection = require("../database/connection");
 module.exports = {
     async create(user) {
         const user_id = uuidv4();
+        const carrinho_id = uuidv4();
         user.user_id = user_id;
-        const result = await connection("user").insert(user);
-        return result;
+        user.carrinho_id = carrinho_id;
+        await connection("user").insert(user);
+        return user_id;
     },
 
     async getById({user_id}){
@@ -15,7 +17,7 @@ module.exports = {
     },
 
     async updateById(user_id, user){
-        const result = await connection("user").where(user_id).update(user);
+        const result = await connection("user").where({user_id}).update(user);
         return result;
     },
 

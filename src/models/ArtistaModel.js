@@ -5,8 +5,8 @@ module.exports = {
     async create(artista) {
         const artista_id = uuidv4();
         artista.artista_id = artista_id;
-        const result = await connection("artista").insert(artista);
-        return result;
+        await connection("artista").insert(artista);
+        return artista_id;
     },
 
     async getById({artista_id, nome}){
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     async updateById(artista_id, artista){
-        const result = await connection("artista").where(artista_id).update(artista);
+        const result = await connection("artista").where({artista_id}).update(artista);
         return result;
     },
 
