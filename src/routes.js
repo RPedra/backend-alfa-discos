@@ -281,7 +281,7 @@ routes.put('/artistas/:artista_id', ArtistaController.update);
 routes.delete('/artistas/:artista_id', ArtistaController.delete);
 
 //cds
-routes.get("/cds/:cd_id", CdController.getById);
+routes.get("/cds/:artista_id", CdController.getByArtista);
 routes.post("/cds", CdController.create);
 routes.put('/cds/:cd_id', CdController.update);
 routes.delete('/cds/:cd_id', CdController.delete);

@@ -19,11 +19,21 @@ module.exports = {
         }
     },
 
-    async getById(request, response){
+    async getByArtista(request,  response){
         try{
+            const {artista_id} = request.params;
+            const result = await CdModel.getByIdWithFilters(artista_id, {});
+ 
+            return response.status(200).json(result);
 
-        } catch(error){
-            
+        }catch(error){
+            console.warn("Erro ao procurar cd:", error);
+
+            return response
+            .status(500)
+            .json({
+                notification: "Erro ao tentar procurar CD"
+            });
         }
     },
 
