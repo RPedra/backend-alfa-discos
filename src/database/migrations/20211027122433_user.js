@@ -5,6 +5,8 @@ exports.up = function(knex) {
     table.string("nome").notNullable();
     table.string("email").notNullable();
     table.string("senha").notNullable();
+    table.date("nascimento").notNullable();
+    table.string("endereco").notNullable();
     table.string("cd_id"); 
     table.foreign("cd_id").references("cd_id").inTable("cd").onDelete("NO ACTION");
   });

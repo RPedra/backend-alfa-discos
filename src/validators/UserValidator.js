@@ -5,7 +5,9 @@ module.exports = {
         [Segments.BODY]: Joi.object().keys({
             nome: Joi.string().required(),
             email: Joi.string().email().required(),
-            senha: Joi.string().min(6).required(), 
+            senha: Joi.string().min(6).required(),
+            nascimento: Joi.date().required(), 
+            endereço: Joi.string().required(),
         })
     }),
     getById: celebrate({
@@ -21,6 +23,8 @@ module.exports = {
             nome: Joi.string().optional(),
             email: Joi.string().email().optional(),
             senha: Joi.string().min(6).optional(),
+            nascimento: Joi.date().optional(),
+            endereco: Joi.string().optional(),
         }).min(1),
     }),
     delete: celebrate({

@@ -7,7 +7,7 @@ module.exports = {
             const newUser = request.body;
             const result = await UserModel.create(newUser);
  
-            return response.status(200).json({cd_id: result});
+            return response.status(200).json({user_id: result});
 
         }catch(error){
             console.warn("Erro no cadastro de usuário:", error);
@@ -21,12 +21,9 @@ module.exports = {
         }
     },
 
-    async getById(request, response){
-        try{
-
-        }catch(error){
-            
-        }
+    async getById(user_id){
+            const result = await connection("User").where({user_id}).select("*").first();
+        return result;
     },
 
     async update(request, response){
