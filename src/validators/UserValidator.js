@@ -7,7 +7,7 @@ module.exports = {
             email: Joi.string().email().required(),
             senha: Joi.string().min(6).required(),
             nascimento: Joi.date().required(), 
-            endereço: Joi.string().required(),
+            endereco: Joi.string().required(),
         })
     }),
     getById: celebrate({
