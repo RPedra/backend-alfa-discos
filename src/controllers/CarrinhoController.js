@@ -20,11 +20,8 @@ module.exports = {
     },
 
     async getById(request, response){
-        try{
-
-        }catch(error){
-            
-        }
+        const result = await connection("Carrinho").where({carrinho_id}).select("*").first();
+        return result;
     },
 
     async update(request, response){

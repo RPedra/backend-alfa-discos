@@ -1,3 +1,4 @@
+const connection = require("../database/connection");
 const CdModel = require("../models/CdModel");
 
 module.exports = {
@@ -19,12 +20,9 @@ module.exports = {
         }
     },
 
-    async getById(request, response){
-        try{
-
-        } catch(error){
-            
-        }
+    async getById(cd_id){
+        const result = await connection("Cd").where({cd_id}).select("*").first();
+        return result;
     },
 
     async update(request, response){

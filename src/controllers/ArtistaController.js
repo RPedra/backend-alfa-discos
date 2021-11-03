@@ -20,11 +20,8 @@ module.exports = {
     },
 
     async getById(request, response){
-        try{
-
-        }catch(error){
-            
-        }
+        const result = await connection("Artista").where({artista_id}).select("*").first();
+        return result;
     },
 
     async update(request, response){

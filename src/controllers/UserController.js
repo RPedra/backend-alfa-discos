@@ -1,13 +1,18 @@
 const UserModel = require("../models/UserModel");
 const CarrinhoModel = require("../models/CarrinhoModel");
+const Firebase = require("../utils/Firebase");
 
 module.exports = {
     async create (request, response){
         try{
-            const newUser = request.body;
-            const result = await UserModel.create(newUser);
+            const user = request.body;
+
+            const uid = await Firebase.createNewUser(user.email, user.senha);
+            delete user.senha;
+            user.firebase_id = uid;
+            const result = await UserModel.create(user);
  
-            return response.status(200).json({cd_id: result});
+            return response.status(200).json({user_id: result});
 
         }catch(error){
             console.warn("Erro no cadastro de usuário:", error);
@@ -21,12 +26,9 @@ module.exports = {
         }
     },
 
-    async getById(request, response){
-        try{
-
-        }catch(error){
-            
-        }
+    async getById(user_id){
+            const result = await connection("User").where({user_id}).select("*").first();
+        return result;
     },
 
     async update(request, response){

@@ -264,33 +264,37 @@ const arnaldo = [
 ];
 
 const UserController = require ("./controllers/UserController");
+const UserValidator = require ("./validators/UserValidator");
 const ArtistaController = require ("./controllers/ArtistaController");
+const ArtistaValidator = require ("./validators/ArtistaValidator");
 const CdController = require ("./controllers/CdController");
+const CdValidator = require ("./validators/CdValidator");
 const CarrinhoController = require ("./controllers/CarrinhoController");
+const CarrinhoValidator = require ("./validators/CarrinhoValidator");
 
 //Users
-routes.get("/users/:user_id", UserController.getById);
-routes.post('/users', UserController.create);
-routes.put('/users/:user_id', UserController.update);
-routes.delete('/users/:user_id', UserController.delete);
+routes.get("/users/:user_id", UserValidator.getById, UserController.getById);
+routes.post('/users', UserValidator.create, UserController.create);
+routes.put('/users/:user_id', UserValidator.update, UserController.update);
+routes.delete('/users/:user_id', UserValidator.delete, UserController.delete);
 
 //artista
-routes.get("/artistas/:artista_id", ArtistaController.getById);
-routes.post('/artistas', ArtistaController.create);
-routes.put('/artistas/:artista_id', ArtistaController.update);
-routes.delete('/artistas/:artista_id', ArtistaController.delete);
+routes.get("/artistas/:artista_id", ArtistaValidator.getById, ArtistaController.getById);
+routes.post('/artistas', ArtistaValidator.create, ArtistaController.create);
+routes.put('/artistas/:artista_id', ArtistaValidator.update, ArtistaController.update);
+routes.delete('/artistas/:artista_id', ArtistaValidator.delete, ArtistaController.delete);
 
 //cds
-routes.get("/cds/:cd_id", CdController.getById);
-routes.post("/cds", CdController.create);
-routes.put('/cds/:cd_id', CdController.update);
-routes.delete('/cds/:cd_id', CdController.delete);
+routes.get("/cds/:cd_id", CdValidator.getById,CdController.getById);
+routes.post("/cds", CdValidator.create, CdController.create);
+routes.put('/cds/:cd_id', CdValidator.update, CdController.update);
+routes.delete('/cds/:cd_id', CdValidator.delete, CdController.delete);
 
 //carrinho 
-routes.get("/carrinho/:carrinho_id", CarrinhoController.getById);
-routes.post('/carrinho', CarrinhoController.create);
-routes.put('/carrinho/:carrinho_id', CarrinhoController.update); 
-routes.delete('/carrinho/:carrinho_id', CarrinhoController.delete);
+routes.get("/carrinho/:carrinho_id", CarrinhoValidator.getById, CarrinhoController.getById);
+routes.post('/carrinho', CarrinhoValidator.create, CarrinhoController.create);
+routes.put('/carrinho/:carrinho_id', CarrinhoValidator.update, CarrinhoController.update); 
+routes.delete('/carrinho/:carrinho_id', CarrinhoValidator.delete, CarrinhoController.delete);
 
 
 module.exports = routes;
