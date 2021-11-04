@@ -271,6 +271,11 @@ const CdController = require ("./controllers/CdController");
 const CdValidator = require ("./validators/CdValidator");
 const CarrinhoController = require ("./controllers/CarrinhoController");
 const CarrinhoValidator = require ("./validators/CarrinhoValidator");
+const SessionController = require ("./controllers/SessionController");
+const auth = require("./middlewares/authentication");
+
+//Session
+routes.post("/login", SessionController.signIn);
 
 //Users
 routes.get("/users/:user_id", UserValidator.getById, UserController.getById);
@@ -285,10 +290,10 @@ routes.put('/artistas/:artista_id', ArtistaValidator.update, ArtistaController.u
 routes.delete('/artistas/:artista_id', ArtistaValidator.delete, ArtistaController.delete);
 
 //cds
-routes.get("/cds/:cd_id", CdValidator.getById,CdController.getById);
-routes.post("/cds", CdValidator.create, CdController.create);
-routes.put('/cds/:cd_id', CdValidator.update, CdController.update);
-routes.delete('/cds/:cd_id', CdValidator.delete, CdController.delete);
+routes.get("/cds/:cd_id", CdValidator.getById, auth.authenticateToken, CdController.getById);
+routes.post("/cds", CdValidator.create, auth.authenticateToken, CdController.create);
+routes.put('/cds/:cd_id', CdValidator.update, auth.authenticateToken, CdController.update);
+routes.delete('/cds/:cd_id', CdValidator.delete, auth.authenticateToken, CdController.delete);
 
 //carrinho 
 routes.get("/carrinho/:carrinho_id", CarrinhoValidator.getById, CarrinhoController.getById);
